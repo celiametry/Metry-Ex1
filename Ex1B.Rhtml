@@ -1,0 +1,75 @@
+<html>
+
+<head>
+<title>Exercise 1B Metry CéLia</title>
+</head>
+
+<body>
+
+The necessary library needs to be loaded.
+<!--begin.rcode
+library(ggplot2)
+end.rcode-->
+
+
+Let`s start. First I wrote down all the information in comments and adapted it into a formula.
+<!--begin.rcode
+mu=mean=10
+#dispersion=2
+#variance=(mu+mu^2)*dispersion
+variance=10+10^2*2
+variance
+end.rcode-->
+
+Here I explain the formula and show how the formula is adapted.
+<!--begin.rcode
+#rnbinom(n, size, prob, mu) #rnbinom(n, size, prob, mu) n=number of observations| size=dispersion parameter | prob= probability of success in each trial | mu= alterniative parameterization via mean
+rnbinom(n=100, size=2, mu=10)
+end.rcode-->
+
+Let`s move on to the *linear* Histogram.
+<!--begin.rcode
+hist(rnbinom(n=100, size=2, mu=10),
+     main="Histogram of negative binomial distribution in Ex 1B") 
+end.rcode-->
+
+
+If we want to eliminate the break in the x-axis in the bins, the following code can be applied.
+<!--begin.rcode
+hist(rnbinom(n=100, size=2, mu=10),
+     breaks = "Sturges",
+     main="Histogram of negative binomial distribution in Ex 1B")
+end.rcode-->
+
+But, here we will work with the first option for the following preperation of the Histogram.
+<!--begin.rcode
+hist(rnbinom(n=100, size=2, mu=10),
+     main="Histogram of negative binomial distribution in Ex 1B",
+     xlab=" Negative Bionomial distribution",
+     ylab="Frequency",
+     col="purple")
+end.rcode-->
+
+Now we make a *logarithmic* Histogram of the Distribution.
+<!--begin.rcode
+hist(log(rnbinom(n=100, size=2, mu=10)+1),
+     main="Histogram of negative binomial distribution in Ex 1B",
+     xlab=" Negative Bionomial distribution",
+     ylab="Frequency",
+     col="orange")
+end.rcode-->
+
+Looks much less skewed! 
+
+For the last part the mean and the variance need to be reported as an in line. 
+<!--begin.rcode
+variance<-10+10^2*2
+mean<-10
+end.rcode-->
+
+The variance and mean can be optained from the formula above and will give you `r variance` for the variance and `r mean` for the mean.
+
+
+
+</body>
+</html>
